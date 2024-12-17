@@ -1,0 +1,11 @@
+prefix=/home/nathan/agrarian/depends/x86_64-w64-linux
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=/home/nathan/agrarian/depends/x86_64-w64-linux/include/xcb-shared
+
+Name: XCB DPMS
+Description: XCB DPMS Extension
+Version: 1.10
+Requires: xcb
+Libs: -L${libdir} -lxcb-dpms
+Cflags: -I${includedir}

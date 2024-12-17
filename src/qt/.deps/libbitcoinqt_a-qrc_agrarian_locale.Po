@@ -1,1 +1,3 @@
-qt/libbitcoinqt_a-qrc_agrarian_locale.o: qt/qrc_agrarian_locale.cpp
+qt/libbitcoinqt_a-qrc_agrarian_locale.o: qt/qrc_agrarian_locale.cpp \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

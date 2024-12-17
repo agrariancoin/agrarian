@@ -1,4 +1,4 @@
-Name "Agrarian Core (64-bit)"
+Name "Agrarian Core (-bit)"
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
@@ -20,7 +20,7 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Agrarian Core"
-!define MUI_FINISHPAGE_RUN $INSTDIR\agrarian-qt.exe
+!define MUI_FINISHPAGE_RUN $INSTDIR\agrarian-qt
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/nathan/agrarian/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -28,7 +28,7 @@ SetCompressor /SOLID lzma
 # Included files
 !include Sections.nsh
 !include MUI2.nsh
-!if "64" == "64"
+!if "" == "64"
 !include x64.nsh
 !endif
 
@@ -48,8 +48,8 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /home/nathan/agrarian/agrarian-${VERSION}-win64-setup.exe
-!if "64" == "64"
+OutFile /home/nathan/agrarian/agrarian-${VERSION}-win-setup.exe
+!if "" == "64"
 InstallDir $PROGRAMFILES64\Agrarian
 !else
 InstallDir $PROGRAMFILES\Agrarian
@@ -73,12 +73,12 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /home/nathan/agrarian/release/agrarian-qt.exe
+    File /home/nathan/agrarian/release/agrarian-qt
     File /oname=COPYING.txt /home/nathan/agrarian/COPYING
     File /oname=readme.txt /home/nathan/agrarian/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /home/nathan/agrarian/release/agrariand.exe
-    File /home/nathan/agrarian/release/agrarian-cli.exe
+    File /home/nathan/agrarian/release/agrariand
+    File /home/nathan/agrarian/release/agrarian-cli
     SetOutPath $INSTDIR\doc
     File /r /home/nathan/agrarian/doc\*.*
     SetOutPath $INSTDIR
@@ -91,8 +91,8 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\agrarian-qt.exe
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Agrarian Core (testnet, 64-bit).lnk" "$INSTDIR\agrarian-qt.exe" "-testnet" "$INSTDIR\agrarian-qt.exe" 1
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" $INSTDIR\agrarian-qt
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Agrarian Core (testnet, -bit).lnk" "$INSTDIR\agrarian-qt" "-testnet" "$INSTDIR\agrarian-qt" 1
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
@@ -105,8 +105,8 @@ Section -post SEC0001
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
     WriteRegStr HKCR "agrarian" "URL Protocol" ""
     WriteRegStr HKCR "agrarian" "" "URL:Agrarian"
-    WriteRegStr HKCR "agrarian\DefaultIcon" "" $INSTDIR\agrarian-qt.exe
-    WriteRegStr HKCR "agrarian\shell\open\command" "" '"$INSTDIR\agrarian-qt.exe" "%1"'
+    WriteRegStr HKCR "agrarian\DefaultIcon" "" $INSTDIR\agrarian-qt
+    WriteRegStr HKCR "agrarian\shell\open\command" "" '"$INSTDIR\agrarian-qt" "%1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -124,7 +124,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
-    Delete /REBOOTOK $INSTDIR\agrarian-qt.exe
+    Delete /REBOOTOK $INSTDIR\agrarian-qt
     Delete /REBOOTOK $INSTDIR\COPYING.txt
     Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
@@ -136,7 +136,7 @@ Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Agrarian Core (testnet, 64-bit).lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Agrarian Core (testnet, -bit).lnk"
     Delete /REBOOTOK "$SMSTARTUP\Agrarian.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
@@ -158,7 +158,7 @@ SectionEnd
 # Installer functions
 Function .onInit
     InitPluginsDir
-!if "64" == "64"
+!if "" == "64"
     ${If} ${RunningX64}
       ; disable registry redirection (enable access to 64-bit portion of registry)
       SetRegView 64

@@ -105,7 +105,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
-host_triplet = x86_64-w64-mingw32
+host_triplet = x86_64-w64-linux-gnu
 bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2) $(am__EXEEXT_3) \
 	$(am__EXEEXT_4) $(am__EXEEXT_5)
 noinst_PROGRAMS =
@@ -116,9 +116,9 @@ am__append_3 = libzerocoin/bignum_gmp.cpp
 #am__append_4 = libzerocoin/bignum_openssl.cpp
 #am__append_5 = compat/glibc_compat.cpp
 #am__append_6 = $(COMPAT_LDFLAGS)
-am__append_7 = agrariand-res.rc
-am__append_8 = agrarian-cli-res.rc
-am__append_9 = agrarian-tx-res.rc
+#am__append_7 = agrariand-res.rc
+#am__append_8 = agrarian-cli-res.rc
+#am__append_9 = agrarian-tx-res.rc
 ##am__append_10 = compat/glibc_compat.cpp
 am__append_11 = $(LIBLEVELDB_INT) \
 	$(LIBMEMENV_INT) \
@@ -127,11 +127,11 @@ am__append_12 = $(LIBLEVELDB_INT)
 am__append_13 = $(LIBMEMENV_INT)
 am__append_14 = -I$(srcdir)/leveldb/include \
 	-I$(srcdir)/leveldb/helpers/memenv
-am__append_15 = -DLEVELDB_PLATFORM_WINDOWS -DWINVER=0x0500 -D__USE_MINGW_ANSI_STDIO=1
-#am__append_16 = -DLEVELDB_PLATFORM_POSIX
-am__append_17 = leveldb/util/env_win.cc \
-	leveldb/port/port_win.cc
-#am__append_18 = leveldb/port/port_posix.cc
+#am__append_15 = -DLEVELDB_PLATFORM_WINDOWS -DWINVER=0x0500 -D__USE_MINGW_ANSI_STDIO=1
+am__append_16 = -DLEVELDB_PLATFORM_POSIX
+#am__append_17 = leveldb/util/env_win.cc \
+#	leveldb/port/port_win.cc
+am__append_18 = leveldb/port/port_posix.cc
 am__append_19 = -DLEVELDB_PLATFORM_POSIX_SSE
 am__append_20 = $(SSE42_CXXFLAGS)
 am__append_21 = test/test_agrarian
@@ -145,10 +145,10 @@ am__append_24 = $(ZMQ_LIBS)
 am__append_25 = $(CLEAN_BITCOIN_TEST)
 am__append_26 = qt/agrarian-qt
 am__append_27 = qt/libbitcoinqt.a
-am__append_28 = $(BITCOIN_QT_WINDOWS_CPP)
+#am__append_28 = $(BITCOIN_QT_WINDOWS_CPP)
 am__append_29 = $(BITCOIN_QT_WALLET_CPP)
 #am__append_30 = $(BITCOIN_MM)
-am__append_31 = $(BITCOIN_RC)
+#am__append_31 = $(BITCOIN_RC)
 am__append_32 = $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
 am__append_33 = $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 am__append_34 = $(CLEAN_QT)
@@ -318,9 +318,9 @@ am__leveldb_libleveldb_a_SOURCES_DIST = leveldb/port/atomic_pointer.h \
 	leveldb/util/options.cc leveldb/util/status.cc \
 	leveldb/util/env_win.cc leveldb/port/port_win.cc \
 	leveldb/port/port_posix.cc
-am__objects_1 = leveldb/util/libleveldb_a-env_win.$(OBJEXT) \
-	leveldb/port/libleveldb_a-port_win.$(OBJEXT)
-#am__objects_2 = leveldb/port/libleveldb_a-port_posix.$(OBJEXT)
+#am__objects_1 = leveldb/util/libleveldb_a-env_win.$(OBJEXT) \
+#	leveldb/port/libleveldb_a-port_win.$(OBJEXT)
+am__objects_2 = leveldb/port/libleveldb_a-port_posix.$(OBJEXT)
 am_leveldb_libleveldb_a_OBJECTS = leveldb/db/libleveldb_a-builder.$(OBJEXT) \
 	leveldb/db/libleveldb_a-c.$(OBJEXT) \
 	leveldb/db/libleveldb_a-dbformat.$(OBJEXT) \
@@ -747,7 +747,7 @@ am__objects_7 =  \
 	qt/libbitcoinqt_a-trafficgraphwidget.$(OBJEXT) \
 	qt/libbitcoinqt_a-utilitydialog.$(OBJEXT)
 am__objects_8 = qt/libbitcoinqt_a-winshutdownmonitor.$(OBJEXT)
-am__objects_9 = $(am__objects_8)
+#am__objects_9 = $(am__objects_8)
 am__objects_10 =  \
 	qt/libbitcoinqt_a-addressbookpage.$(OBJEXT) \
 	qt/libbitcoinqt_a-addresstablemodel.$(OBJEXT) \
@@ -897,7 +897,7 @@ libbitcoinconsensus_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 #am_libbitcoinconsensus_la_rpath = -rpath \
 #	$(libdir)
 am__agrarian_cli_SOURCES_DIST = agrarian-cli.cpp agrarian-cli-res.rc
-am__objects_18 = agrarian-cli-res.$(OBJEXT)
+#am__objects_18 = agrarian-cli-res.$(OBJEXT)
 am_agrarian_cli_OBJECTS = agrarian_cli-agrarian-cli.$(OBJEXT) \
 	$(am__objects_18)
 agrarian_cli_OBJECTS = $(am_agrarian_cli_OBJECTS)
@@ -912,7 +912,7 @@ agrarian_cli_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(agrarian_cli_CXXFLAGS) \
 	$(CXXFLAGS) $(agrarian_cli_LDFLAGS) $(LDFLAGS) -o $@
 am__agrarian_tx_SOURCES_DIST = agrarian-tx.cpp agrarian-tx-res.rc
-am__objects_19 = agrarian-tx-res.$(OBJEXT)
+#am__objects_19 = agrarian-tx-res.$(OBJEXT)
 am_agrarian_tx_OBJECTS = agrarian_tx-agrarian-tx.$(OBJEXT) \
 	$(am__objects_19)
 agrarian_tx_OBJECTS = $(am_agrarian_tx_OBJECTS)
@@ -923,7 +923,7 @@ agrarian_tx_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(agrarian_tx_CXXFLAGS) \
 	$(CXXFLAGS) $(agrarian_tx_LDFLAGS) $(LDFLAGS) -o $@
 am__agrariand_SOURCES_DIST = agrariand.cpp agrariand-res.rc
-am__objects_20 = agrariand-res.$(OBJEXT)
+#am__objects_20 = agrariand-res.$(OBJEXT)
 am_agrariand_OBJECTS = agrariand-agrariand.$(OBJEXT) $(am__objects_20)
 agrariand_OBJECTS = $(am_agrariand_OBJECTS)
 am__DEPENDENCIES_3 = $(am__append_12)
@@ -949,8 +949,8 @@ am__objects_21 =  \
 #am__objects_22 =  \
 #	$(am__objects_21)
 am__objects_23 = qt/res/agrarian-qt-res.$(OBJEXT)
-am__objects_24 =  \
-	$(am__objects_23)
+#am__objects_24 =  \
+#	$(am__objects_23)
 am_qt_agrarian_qt_OBJECTS =  \
 	qt/agrarian_qt-agrarian.$(OBJEXT) \
 	$(am__objects_22) $(am__objects_24)
@@ -1809,7 +1809,7 @@ am__set_TESTS_bases = \
 AM_TESTSUITE_SUMMARY_HEADER = ' for $(PACKAGE_STRING)'
 RECHECK_LOGS = $(TEST_LOGS)
 TEST_SUITE_LOG = test-suite.log
-TEST_EXTENSIONS = .exe .test
+TEST_EXTENSIONS =  .test
 LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 LOG_COMPILE = $(LOG_COMPILER) $(AM_LOG_FLAGS) $(LOG_FLAGS)
 am__set_b = \
@@ -1823,7 +1823,7 @@ am__set_b = \
       b='$*';; \
   esac
 am__test_logs1 = $(TESTS:=.log)
-am__test_logs2 = $(am__test_logs1:.exe.log=.log)
+am__test_logs2 = $(am__test_logs1:.log=.log)
 TEST_LOGS = $(am__test_logs2:.test.log=.log)
 TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
@@ -1864,7 +1864,7 @@ am__relativize = \
 ACLOCAL = ${SHELL} '/home/nathan/agrarian/build-aux/missing' aclocal-1.16
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
-AR = /usr/bin/x86_64-w64-mingw32-ar
+AR = ar
 ARFLAGS = cr
 AUTOCONF = ${SHELL} '/home/nathan/agrarian/build-aux/missing' autoconf
 AUTOHEADER = ${SHELL} '/home/nathan/agrarian/build-aux/missing' autoheader
@@ -1878,17 +1878,17 @@ BITCOIN_CLI_NAME = agrarian-cli
 BITCOIN_DAEMON_NAME = agrariand
 BITCOIN_GUI_NAME = agrarian-qt
 BITCOIN_TX_NAME = agrarian-tx
-BOOST_CHRONO_LIB = -lboost_chrono-mt-s
-BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -mthreads -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include
-BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt-s
-BOOST_LDFLAGS = -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib
-BOOST_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib -lboost_system-mt-s -lboost_filesystem-mt-s -lboost_program_options-mt-s -lboost_thread_win32-mt-s -lboost_chrono-mt-s
-BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt-s
-BOOST_SYSTEM_LIB = -lboost_system-mt-s
-BOOST_THREAD_LIB = -lboost_thread_win32-mt-s
-BOOST_UNIT_TEST_FRAMEWORK_LIB = -lboost_unit_test_framework-mt-s
+BOOST_CHRONO_LIB = -lboost_chrono-mt
+BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/home/nathan/agrarian/depends/x86_64-w64-linux/share/../include
+BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt
+BOOST_LDFLAGS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/share/../lib
+BOOST_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/share/../lib -lboost_system-mt -lboost_filesystem-mt -lboost_program_options-mt -lboost_thread-mt -lboost_chrono-mt
+BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt
+BOOST_SYSTEM_LIB = -lboost_system-mt
+BOOST_THREAD_LIB = -lboost_thread-mt
+BOOST_UNIT_TEST_FRAMEWORK_LIB = -lboost_unit_test_framework-mt
 BREW = 
-CC = x86_64-w64-mingw32-gcc
+CC = gcc -m64
 CCACHE = 
 CCDEPMODE = depmode=gcc3
 CFLAGS = -pipe -O2 
@@ -1899,15 +1899,15 @@ CLIENT_VERSION_MINOR = 0
 CLIENT_VERSION_REVISION = 0
 COMPAT_LDFLAGS = 
 COPYRIGHT_YEAR = 2022
-CPP = x86_64-w64-mingw32-gcc -E
-CPPFILT = /usr/bin/x86_64-w64-mingw32-c++filt
-CPPFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS -D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -D_FILE_OFFSET_BITS=64
-CRYPTO_CFLAGS = 
-CRYPTO_LIBS = -lcrypto
+CPP = gcc -m64 -E
+CPPFILT = /usr/bin/c++filt
+CPPFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/share/../include/  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS
+CRYPTO_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+CRYPTO_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lcrypto -ldl
 CSCOPE = cscope
 CTAGS = ctags
-CXX = x86_64-w64-mingw32-g++ -std=c++11
-CXXCPP = x86_64-w64-mingw32-g++ -std=c++11 -E
+CXX = g++ -m64 -std=c++11
+CXXCPP = g++ -m64 -std=c++11 -E
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -pipe -O2 
 CYGPATH_W = echo
@@ -1915,7 +1915,7 @@ DEBUG_CPPFLAGS =
 DEBUG_CXXFLAGS = 
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-DLLTOOL = x86_64-w64-mingw32-dlltool
+DLLTOOL = false
 DOXYGEN = 
 DSYMUTIL = 
 DUMPBIN = 
@@ -1925,14 +1925,14 @@ ECHO_T =
 EGREP = /usr/bin/grep -E
 ERROR_CXXFLAGS = 
 ETAGS = etags
-EVENT_CFLAGS = 
-EVENT_LIBS = -levent
-EVENT_PTHREADS_CFLAGS = 
-EVENT_PTHREADS_LIBS = 
-EXEEXT = .exe
+EVENT_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+EVENT_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -levent
+EVENT_PTHREADS_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+EVENT_PTHREADS_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -levent_pthreads -levent
+EXEEXT = 
 EXTENDED_FUNCTIONAL_TESTS = 
 FGREP = /usr/bin/grep -F
-GCOV = /usr/bin/x86_64-w64-mingw32-gcov
+GCOV = /usr/bin/gcov
 GENHTML = 
 GENISOIMAGE = 
 GIT = /usr/bin/git
@@ -1941,7 +1941,7 @@ GPROF_LDFLAGS =
 GREP = /usr/bin/grep
 HARDENED_CPPFLAGS =  -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 HARDENED_CXXFLAGS =  -Wstack-protector -fstack-protector-all
-HARDENED_LDFLAGS =  -Wl,--dynamicbase -Wl,--nxcompat -Wl,--high-entropy-va -pie
+HARDENED_LDFLAGS =  -Wl,-z,relro -Wl,-z,now -pie
 HAVE_CXX11 = 1
 HEXDUMP = /usr/bin/hexdump
 IMAGEMAGICK_CONVERT = 
@@ -1953,39 +1953,39 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LCOV = 
 LCOV_OPTS = 
-LD = /usr/bin/x86_64-w64-mingw32-ld
-LDFLAGS = -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib 
+LD = /usr/bin/ld -m elf_x86_64
+LDFLAGS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/share/../lib 
 LEVELDB_CPPFLAGS =  $(am__append_14)
-LEVELDB_TARGET_FLAGS = -DOS_WINDOWS
+LEVELDB_TARGET_FLAGS = -DOS_LINUX
 LIBLEVELDB =  $(am__append_12)
 LIBMEMENV =  $(am__append_13)
 LIBOBJS = 
-LIBS = -lcrypto -lQt5AccessibilitySupport -lQt5DeviceDiscoverySupport -lQt5FbSupport -lQt5ThemeSupport -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lssp -lcrypt32 -liphlpapi -lshlwapi -lmswsock -lws2_32 -ladvapi32 -lrpcrt4 -luuid -loleaut32 -lole32 -lcomctl32 -lshell32 -lwinmm -lwinspool -lcomdlg32 -lgdi32 -luser32 -lkernel32 -lmingwthrd  -lgmp
+LIBS = -lcrypto  -lgmp
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
-LIBTOOL_APP_LDFLAGS =  -all-static
+LIBTOOL_APP_LDFLAGS = 
 LIPO = 
 LN_S = ln -s
-LRELEASE = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/bin/lrelease
+LRELEASE = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/bin/lrelease
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-LUPDATE = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/bin/lupdate
+LUPDATE = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/bin/lupdate
 MAINT = 
 MAKEINFO = ${SHELL} '/home/nathan/agrarian/build-aux/missing' makeinfo
-MAKENSIS = none
+MAKENSIS = 
 MANIFEST_TOOL = :
-MINIUPNPC_CPPFLAGS = -DSTATICLIB -DMINIUPNP_STATICLIB
+MINIUPNPC_CPPFLAGS = 
 MINIUPNPC_LIBS = -lminiupnpc
 MKDIR_P = /usr/bin/mkdir -p
-MOC = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/bin/moc
+MOC = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/bin/moc
 MOC_DEFS = -DHAVE_CONFIG_H -I$(srcdir)
-NM = x86_64-w64-mingw32-nm
+NM = nm
 NMEDIT = 
 NOWARN_CXXFLAGS = 
-OBJCOPY = /usr/bin/x86_64-w64-mingw32-objcopy
-OBJCXX = x86_64-w64-mingw32-g++ -std=c++11
+OBJCOPY = /usr/bin/objcopy
+OBJCXX = g++ -m64 -std=c++11
 OBJCXXDEPMODE = depmode=gcc3
 OBJCXXFLAGS = 
-OBJDUMP = x86_64-w64-mingw32-objdump
+OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
@@ -1997,61 +1997,61 @@ PACKAGE_TARNAME = agrarian
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0.0
 PATH_SEPARATOR = :
-PIC_FLAGS = 
+PIC_FLAGS = -fPIC
 PIE_FLAGS = -fPIE
 PKG_CONFIG = /usr/bin/pkg-config --static
 PKG_CONFIG_LIBDIR = 
-PKG_CONFIG_PATH = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../share/pkgconfig:/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib/pkgconfig
+PKG_CONFIG_PATH = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../share/pkgconfig:/home/nathan/agrarian/depends/x86_64-w64-linux/share/../lib/pkgconfig
 PORT = 
-PROTOBUF_CFLAGS = 
-PROTOBUF_LIBS = -lprotobuf
-PROTOC = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/bin/protoc
-PTHREAD_CC = x86_64-w64-mingw32-gcc
+PROTOBUF_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+PROTOBUF_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lprotobuf
+PROTOC = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/bin/protoc
+PTHREAD_CC = gcc -m64
 PTHREAD_CFLAGS = -pthread
 PTHREAD_LIBS = 
 PYTHON = /usr/bin/python3
-PYTHONPATH = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/lib/python3/dist-packages:
-QR_CFLAGS = 
-QR_LIBS = -lqrencode
-QT5_CFLAGS = 
-QT5_LIBS = 
-QTACCESSIBILITY_CFLAGS = 
-QTACCESSIBILITY_LIBS = 
+PYTHONPATH = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/lib/python3/dist-packages:
+QR_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+QR_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lqrencode -lpthread
+QT5_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtNetwork -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtWidgets -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QT5_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
+QTACCESSIBILITY_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtAccessibilitySupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTACCESSIBILITY_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5AccessibilitySupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
 QTCGL_CFLAGS = 
 QTCGL_LIBS = 
 QTCLIPBOARD_CFLAGS = 
 QTCLIPBOARD_LIBS = 
-QTDEVICEDISCOVERY_CFLAGS = 
-QTDEVICEDISCOVERY_LIBS = 
-QTEVENTDISPATCHER_CFLAGS = 
-QTEVENTDISPATCHER_LIBS = 
-QTFB_CFLAGS = 
-QTFB_LIBS = 
-QTFONTDATABASE_CFLAGS = 
-QTFONTDATABASE_LIBS = 
+QTDEVICEDISCOVERY_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtDeviceDiscoverySupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTDEVICEDISCOVERY_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5DeviceDiscoverySupport -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2
+QTEVENTDISPATCHER_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtEventDispatcherSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTEVENTDISPATCHER_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
+QTFB_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtFbSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTFB_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5FbSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
+QTFONTDATABASE_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtFontDatabaseSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTFONTDATABASE_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -L//home/nathan/agrarian/depends/x86_64-w64-linux/lib -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
 QTGRAPHICS_CFLAGS = 
 QTGRAPHICS_LIBS = 
 QTPLATFORM_CFLAGS = 
 QTPLATFORM_LIBS = 
-QTTHEME_CFLAGS = 
-QTTHEME_LIBS = 
-QTXCBQPA_CFLAGS = 
-QTXCBQPA_LIBS = 
-QT_DBUS_CFLAGS = 
-QT_DBUS_INCLUDES = 
-QT_DBUS_LIBS = -lQt5DBus -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib
-QT_INCLUDES = -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/QtCore -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/QtWidgets -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/QtNetwork -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/QtTest -I/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../include/QtDBus
-QT_LDFLAGS =  -mwindows
-QT_LIBS = -lqwindows -lqminimal -lQt5Widgets -lQt5Network -lQt5Gui     -lQt5Core    -lqtharfbuzz -lqtpcre2 -lqtlibpng -lz  -limm32  -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../plugins/platforms -lversion -ldwmapi -luxtheme
+QTTHEME_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtThemeSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTTHEME_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
+QTXCBQPA_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtXcbQpa -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtServiceSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtThemeSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtEventDispatcherSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtFontDatabaseSupport -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QTXCBQPA_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -L//home/nathan/agrarian/depends/x86_64-w64-linux/lib -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -L//home/nathan/agrarian/depends/x86_64-w64-linux/lib -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2
+QT_DBUS_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtDBus -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QT_DBUS_INCLUDES = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtDBus -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QT_DBUS_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5DBus -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2
+QT_INCLUDES = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtNetwork -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtWidgets -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtGui -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QT_LDFLAGS = 
+QT_LIBS = -lqxcb -lxcb-static -lqminimal -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -L//home/nathan/agrarian/depends/x86_64-w64-linux/lib -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -L//home/nathan/agrarian/depends/x86_64-w64-linux/lib -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5XcbQpa -lQt5ServiceSupport -lQt5ThemeSupport -lQt5DBus -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -lfontconfig -lfreetype -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lX11-xcb -lX11 -lxcb-static -lxcb -lQt5ServiceSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5ThemeSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5DBus -lQt5Core -lpthread -lm -lz -lqtpcre2 -lQt5EventDispatcherSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5FontDatabaseSupport -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau -lQt5FbSupport -lQt5AccessibilitySupport -lQt5DeviceDiscoverySupport -lQt5ThemeSupport -lQt5EventDispatcherSupport -lQt5FontDatabaseSupport -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5Network -lQt5Core -lm -lz -lqtpcre2 -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtlibpng -lqtharfbuzz -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Gui -lQt5Core -lm -lz -lqtpcre2 -lpthread -lqtlibpng -lqtharfbuzz -lz -lQt5Core -lpthread -lm -lz -lqtpcre2 -L/home/nathan/agrarian/depends/x86_64-w64-linux/share/../plugins/platforms
 QT_PIE_FLAGS = -fPIE
 QT_SELECT = qt5
-QT_TEST_CFLAGS = 
-QT_TEST_INCLUDES = 
-QT_TEST_LIBS = -lQt5Test -L/home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../lib
-QT_TRANSLATION_DIR = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../translations
-RANLIB = /usr/bin/x86_64-w64-mingw32-ranlib
-RCC = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/bin/rcc
-READELF = /usr/bin/x86_64-w64-mingw32-readelf
+QT_TEST_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtTest -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QT_TEST_INCLUDES = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtTest -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/QtCore
+QT_TEST_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lQt5Test -lQt5Core -lm -lz -lqtpcre2 -lpthread -lQt5Core -lpthread -lm -lz -lqtpcre2
+QT_TRANSLATION_DIR = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../translations
+RANLIB = ranlib
+RCC = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/bin/rcc
+READELF = /usr/bin/readelf
 RELDFLAGS = 
 RSVG_CONVERT = 
 SANITIZER_CXXFLAGS = 
@@ -2062,12 +2062,12 @@ SHANI_CXXFLAGS = -msse4 -msha
 SHELL = /bin/bash
 SSE41_CXXFLAGS = -msse4.1
 SSE42_CXXFLAGS = -msse4.2
-SSL_CFLAGS = 
-SSL_LIBS = -lssl
-STRIP = /usr/bin/x86_64-w64-mingw32-strip
+SSL_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+SSL_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lssl -lcrypto -ldl
+STRIP = /usr/bin/strip
 TESTDEFS = 
 TIFFCP = 
-UIC = /home/nathan/agrarian/depends/x86_64-w64-mingw32/share/../native/bin/uic
+UIC = /home/nathan/agrarian/depends/x86_64-w64-linux/share/../native/bin/uic
 UNIVALUE_CFLAGS = -I$(srcdir)/univalue/include
 UNIVALUE_LIBS = univalue/libunivalue.la
 USE_NUM_GMP = 
@@ -2076,13 +2076,13 @@ USE_QRCODE =
 USE_UPNP = 
 VERSION = 1.0.0
 WARN_CXXFLAGS = 
-WINDOWS_BITS = 64
-WINDRES = /usr/bin/x86_64-w64-mingw32-windres
-X11XCB_CFLAGS = 
-X11XCB_LIBS = 
+WINDOWS_BITS = 
+WINDRES = 
+X11XCB_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include -I/home/nathan/agrarian/depends/x86_64-w64-linux/include/xcb-shared -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+X11XCB_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau
 XGETTEXT = 
-ZMQ_CFLAGS =  -DZMQ_STATIC
-ZMQ_LIBS = -lzmq
+ZMQ_CFLAGS = -I/home/nathan/agrarian/depends/x86_64-w64-linux/include
+ZMQ_LIBS = -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lzmq -lpthread -lrt
 abs_builddir = /home/nathan/agrarian/src
 abs_srcdir = /home/nathan/agrarian/src
 abs_top_builddir = /home/nathan/agrarian
@@ -2110,10 +2110,10 @@ datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-w64-mingw32
-host_alias = x86_64-w64-mingw32
+host = x86_64-w64-linux-gnu
+host_alias = x86_64-w64-linux
 host_cpu = x86_64
-host_os = mingw32
+host_os = linux-gnu
 host_vendor = w64
 htmldir = ${docdir}
 includedir = ${prefix}/include
@@ -10101,13 +10101,13 @@ qt/test/test_agrarian-qt.log: qt/test/test_agrarian-qt$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-.test$(EXEEXT).log:
-	@p='$<'; \
-	$(am__set_b); \
-	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+#.test$(EXEEXT).log:
+#	@p='$<'; \
+#	$(am__set_b); \
+#	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
+#	--log-file $$b.log --trs-file $$b.trs \
+#	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
+#	"$$tst" $(AM_TESTS_FD_REDIRECT)
 distdir: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) distdir-am
 

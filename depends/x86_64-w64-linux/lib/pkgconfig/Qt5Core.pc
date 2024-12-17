@@ -1,0 +1,15 @@
+prefix=/home/nathan/agrarian/depends/x86_64-w64-linux
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+host_bins=${prefix}/native/bin
+qt_config=release c++11 dbus no-qml-debug reduce_exports release_tools static stl properties animation textcodec big_codecs clock-monotonic codecs textdate datestring doubleconversion eventfd filesystemiterator filesystemwatcher gestures itemmodel proxymodel identityproxymodel inotify library mimetype process regularexpression settings sharedmemory sortfilterproxymodel stringlistmodel systemsemaphore temporaryfile threadsafe-cloexec translation xmlstream xmlstreamreader xmlstreamwriter
+
+Name: Qt5 Core
+Description: Qt Core module
+Version: 5.9.7
+Libs: -L${libdir} -lQt5Core 
+Libs.private: -lpthread -lm -lz -L/home/nathan/agrarian/depends/x86_64-w64-linux/lib -lqtpcre2 
+Cflags: -I${includedir}/QtCore 
+

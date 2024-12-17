@@ -1,0 +1,14 @@
+prefix=/home/nathan/agrarian/depends/x86_64-w64-linux
+exec_prefix=/home/nathan/agrarian/depends/x86_64-w64-linux
+libdir=/home/nathan/agrarian/depends/x86_64-w64-linux/lib
+includedir=/home/nathan/agrarian/depends/x86_64-w64-linux/include
+
+Name: FreeType 2
+URL: http://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 19.0.13
+Requires:
+Requires.private: 
+Libs: -L${libdir} -lfreetype
+Libs.private: 
+Cflags: -I${includedir}/freetype2
